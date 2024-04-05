@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 }
 
 type GridItemProps = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
+  title: string
+  description: string
+  icon: React.ReactNode
+}
 
 const GridItem = ({ title, description, icon }: GridItemProps) => (
   <div key={title} className="flex flex-col items-center justify-center text-center">
@@ -33,7 +33,7 @@ const GridItem = ({ title, description, icon }: GridItemProps) => (
     <h3 className="mb-2 text-xl font-bold dark:text-white">{title}</h3>
     <p className="text-gray-500 dark:text-gray-400">{description}</p>
   </div>
-);
+)
 
 export default function Web() {
   return (
