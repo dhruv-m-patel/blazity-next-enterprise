@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   },
 }
 
+type GridItemProps = {
+  title: string
+  description: string
+  icon: React.ReactNode
+}
+
+const GridItem = ({ title, description, icon }: GridItemProps) => (
+  <div key={title} className="flex flex-col items-center justify-center text-center">
+    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 p-1.5 text-blue-700 dark:bg-primary-900 lg:h-12 lg:w-12">
+      {icon}
+    </div>
+    <h3 className="mb-2 text-xl font-bold dark:text-white">{title}</h3>
+    <p className="text-gray-500 dark:text-gray-400">{description}</p>
+  </div>
+)
+
 export default function Web() {
   return (
     <>
@@ -33,10 +49,11 @@ export default function Web() {
               Experience rapid UI development, AI-powered code reviews, and an extensive suite of tools for a smooth and
               enjoyable development process.
             </p>
-            <Button href="https://github.com/Blazity/next-enterprise" className="mr-3">
+            <Button as="a" href="https://github.com/Blazity/next-enterprise" className="mr-3">
               Get started
             </Button>
             <Button
+              as="a"
               href="https://vercel.com/new/git/external?repository-url=https://github.com/Blazity/next-enterprise"
               intent="secondary"
             >
@@ -49,13 +66,12 @@ export default function Web() {
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6">
           <div className="justify-center space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
             {LP_GRID_ITEMS.map((singleItem) => (
-              <div key={singleItem.title} className="flex flex-col items-center justify-center text-center">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 p-1.5 text-blue-700 dark:bg-primary-900 lg:h-12 lg:w-12">
-                  {singleItem.icon}
-                </div>
-                <h3 className="mb-2 text-xl font-bold dark:text-white">{singleItem.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400">{singleItem.description}</p>
-              </div>
+              <GridItem
+                key={singleItem.title}
+                title={singleItem.title}
+                description={singleItem.description}
+                icon={singleItem.icon}
+              />
             ))}
           </div>
         </div>
